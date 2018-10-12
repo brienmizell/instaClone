@@ -6,9 +6,22 @@ html {
     box-sizing: inherit;
 }
 
+/* chef aquino's special sauce. */
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;`
+}
+
+.thumbnail-item {
+    /* 1. controls the size of the image */
+    width: 150px;
+    height: 150px;
+}
+
+.thumbnailitem > img {
+    /* the image adapts to it's parent */
+    /* choose either the height or width, not both */
+    width: 100%;
 }
