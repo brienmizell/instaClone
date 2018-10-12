@@ -22,6 +22,18 @@ function createImage(imageURL){
     // theImage.src = imageURL;
     theImage.setAttribute('src', imageURL);
 
+    // add an even listener to the image
+    theImage.addEventListener('click', function() {
+        console.log('Hello!')
+        // the element that got clicked is accessaible 
+        // as `event.target`
+        // And, I can read the `src` attribute!
+        console.log(event.target.src);
+
+        // I can now set the output image's src
+        to EventTarget.target.src!
+    })
+
     return theImage;
 }
 
@@ -34,3 +46,9 @@ function createThumbnail(url) {
     theContainer.appendChild(createImage(url));
 
 }
+
+// just draw a thumbnail to the body
+// so we can test the clicky mc clickersonability
+let firstImageURL = IMAGES[0];
+let testThumb = createThumbnail(firstImageURL);
+document.body.appendChild(testThumb);
