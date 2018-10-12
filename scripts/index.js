@@ -29,6 +29,8 @@ function createImage(imageURL){
 function createThumbnail(url) {
     const theContainer = document.createElement('div');
     theContainer.classList.add('thumbnail-item');
+
+    const image = createImage(imageURL);
     theContainer.appendChild(createImage(url));
 
 }
