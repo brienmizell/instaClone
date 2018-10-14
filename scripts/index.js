@@ -52,3 +52,4 @@ function createThumbnail(url) {
 let firstImageURL = IMAGES[0];
 let testThumb = createThumbnail(firstImageURL);
 document.body.appendChild(testThumb);
+// 
