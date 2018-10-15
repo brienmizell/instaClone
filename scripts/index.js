@@ -2,7 +2,7 @@
 const IMAGES = [
     "https://thumbs.gfycat.com/TemptingAngelicHoneybee-small.gif",
     "http://farm5.static.flickr.com/4063/4362705129_261db3ea0c_o.gif",
-    "https://static1.fjcdn.com/thumbnails/comments/Thanks+buddy+have+a+random+gif+_fc5c9c6c4c6b447f37d8f54e6c84b3b1.gif"
+    "https://static1.fjcdn.com/thumbnails/comments/Thanks+buddy+have+a+random+gif+_fc5c9c6c4c6b447f37d8f54e6c84b3b1.gif",
 ];
 
 // Alternate version if you're using images on the hard drive.
@@ -13,43 +13,52 @@ const IMAGES = [
 //     "images/oakley-2.jpg"
 // ];
 
-//  function that generates the thumbnail div
-// funcation that generates an img element
-
-function createImage(imageURL){
+// function that generates an img element
+function createImage(imageURL) {
     const theImage = document.createElement('img');
-
+    
     // theImage.src = imageURL;
     theImage.setAttribute('src', imageURL);
 
-    // add an even listener to the image
-    theImage.addEventListener('click', function() {
-        console.log('Hello!')
-        // the element that got clicked is accessaible 
+    // add an event listener to the image
+    theImage.addEventListener('click', function (event) {
+        console.log('hello!');
+        // the element that got clicked is accessible
         // as `event.target`
         // And, I can read the `src` attribute!
         console.log(event.target.src);
 
         // I can now set the output image's src
-        to EventTarget.target.src!
-    })
+        // to event.target.src!
+    });
 
+    
     return theImage;
 }
 
 // function that generates the thumbnail div
-function createThumbnail(url) {
+function createThumbnail(imageURL){
     const theContainer = document.createElement('div');
     theContainer.classList.add('thumbnail-item');
 
     const image = createImage(imageURL);
-    theContainer.appendChild(createImage(url));
+    theContainer.appendChild(image);
 
+    return theContainer;
 }
 
 // just draw a thumbnail to the body
 // so we can test the clicky mc clickersonability
-let firstImageURL = IMAGES[0];
-let testThumb = createThumbnail(firstImageURL);
-document.body.appendChild(testThumb);
-// 
+// let firstImageURL = IMAGES[0];
+
+// loop through IMAGES array.
+// For each image, call the anonymous function.
+// The anon func should expect to recieve and image URL
+IMAGES.forEach(function(anImageUrl) {
+    
+    // We pass that image URL to our createThumbnail func
+    let testThumb = createThumbnail(anImageUrl);
+
+    // then append that thumnail to the page.
+    document.body.appendChild(testThumb);
+})
