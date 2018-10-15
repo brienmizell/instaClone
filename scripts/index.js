@@ -39,7 +39,7 @@ function createImage(imageInfo) {
         // I can now set the output image's src
         // to event.target.src!
         outputElement.setAttribute('src', even.target.src);
-        modalElement.classList.toggle('modal-hidden');
+        modalElement.classList.remove('modal-hidden');
     });
 
     
@@ -70,5 +70,18 @@ IMAGES.forEach(function(anImageURL) {
     let aThumbnail = createThumbnail(anImageURL);
 
     // then append that thumnail to the page.
-    thumbnailContainer.appendChild(testThumb);
+    // thumbnailContainer.appendChild(testThumb);
 })
+
+window.addEventListener('keydown', function (event){
+    // console.log('you pressed a key');
+    // console.log(event);
+    // key: "escape"
+    // keyCode: 27
+
+    if (event.keyCode === 27) {
+        console.log('I want to hide the modal!');
+        modalElement.classList.add('modal-hidden');
+
+    }
+});
