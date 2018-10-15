@@ -15,6 +15,8 @@ const IMAGES = [
 
 const thumbnailContainer = document.querySelector('[data-container]');
 const outputElement = document.querySelector('[data-output');
+const modalElement = document.querySelector('[data-modal]');
+console.log(modalElement);
 
 // function that generates an img element
 function createImage(imageInfo) {
@@ -36,6 +38,8 @@ function createImage(imageInfo) {
 
         // I can now set the output image's src
         // to event.target.src!
+        outputElement.setAttribute('src', even.target.src);
+        modalElement.classList.toggle('modal-hidden');
     });
 
     
