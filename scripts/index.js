@@ -14,19 +14,17 @@ const IMAGES = [
 // ];
 
 const thumbnailContainer = document.querySelector('[data-container]');
-const outputElement = document.querySelector('[data-output');
+const outputElement = document.querySelector('[data-output]');
 const modalElement = document.querySelector('[data-modal]');
-console.log(modalElement);
+const getModal = document.querySelector('[data-modal]')
+// console.log(modalElement);
 
 // function that generates an img element
-function createImage(imageInfo) {
+function createImage(imageURL) {
     const theImage = document.createElement('img');
     
-    // theImage.src = imageInfo;
-    theImage.setAttribute('src', imageInfo.url);
-    theImage.setAttribute('alt', imageInfo.alt);
-    theImage.setAttribute('title', imageInfo.title);
-
+    // theImage.src = imageURL;
+    theImage.setAttribute('src', imageURL);
 
     // add an event listener to the image
     theImage.addEventListener('click', function (event) {
@@ -38,13 +36,17 @@ function createImage(imageInfo) {
 
         // I can now set the output image's src
         // to event.target.src!
-        outputElement.setAttribute('src', even.target.src);
+        outputElement.setAttribute('src', event.target.src);
+        // modalElement.classList.toggle('modal-hidden');
+        // "remove" is more specific, so we'll use that. yeah!
         modalElement.classList.remove('modal-hidden');
     });
 
     
     return theImage;
 }
+
+
 
 // function that generates the thumbnail div
 function createThumbnail(imageURL){
@@ -61,27 +63,34 @@ function createThumbnail(imageURL){
 // so we can test the clicky mc clickersonability
 // let firstImageURL = IMAGES[0];
 
-// loop through IMAGES array.
+// Loop through the IMAGES array.
 // For each image, call the anonymous function.
-// The anon func should expect to recieve and image URL
-IMAGES.forEach(function(anImageURL) {
-    
+// The anon func should expect to receive an image URL
+IMAGES.forEach(function (anImageUrl) {
+
     // We pass that image URL to our createThumbnail func
-    let aThumbnail = createThumbnail(anImageURL);
+    let aThumbnail = createThumbnail(anImageUrl);
 
-    // then append that thumnail to the page.
-    // thumbnailContainer.appendChild(testThumb);
-})
+    // then append that thumbnail to the page.
+    thumbnailContainer.appendChild(aThumbnail);
+});
 
-window.addEventListener('keydown', function (event){
+window.addEventListener('keydown', function (event) {
     // console.log('you pressed a key');
     // console.log(event);
-    // key: "escape"
+    // key: "Escape"
     // keyCode: 27
 
     if (event.keyCode === 27) {
         console.log('I want to hide the modal!');
         modalElement.classList.add('modal-hidden');
+    }
+});
 
+window.onclick('target', function (event){
+    if (event.target === getModal) {
+        getModal.style.display = "none";
+    } else {
+        getModal.style.display = ".modal";
     }
 });
