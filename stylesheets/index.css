@@ -45,3 +45,49 @@ html, body {
     /* space-* distributes leftover space */
     justify-content: space-around;
 }
+
+.picture-frame {
+    width: 90%;
+    /* outline: 5px solid red; */
+    margin: 0 auto;
+    text-align: center;
+}
+.picture-frame > img {
+    /* the img adapts to its parent */
+    /* definitely, absolutely use both max-height and max-width */
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.modal {
+    /* 
+        - cover the whole page
+            - yep, overlap everything
+        - put a see-through grey color on top of the page
+        - center the contents
+    */
+
+    /* 
+    To make things overlap, use postion: absolute.
+    This lets you set coordinates for where exactly
+    you want to place an element.
+     */
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+     /* border: 5px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.modal-hidden {
+    display: none;
+    visibility: hidden;
+}

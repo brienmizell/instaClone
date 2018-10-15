@@ -1,8 +1,8 @@
 // Instaclone!
 const IMAGES = [
-    {url: "http://farm5.static.flickr.com/4063/4362705129_261db3ea0c_o.gif", Alt="super amazing photo"},
-    {url: "https://thumbs.gfycat.com/TemptingAngelicHoneybee-small.gif", Alt="super amazing photo 2"},
-    {url: "https://static1.fjcdn.com/thumbnails/comments/Thanks+buddy+have+a+random+gif+_fc5c9c6c4c6b447f37d8f54e6c84b3b1.gif", Alt="super amazing photo 3"}
+    "http://farm5.static.flickr.com/4063/4362705129_261db3ea0c_o.gif",
+    "https://thumbs.gfycat.com/TemptingAngelicHoneybee-small.gif",
+    "https://static1.fjcdn.com/thumbnails/comments/Thanks+buddy+have+a+random+gif+_fc5c9c6c4c6b447f37d8f54e6c84b3b1.gif"
 ];
 
 // Alternate version if you're using images on the hard drive.
@@ -13,6 +13,7 @@ const IMAGES = [
 //     "images/oakley-2.jpg"
 // ];
 
+const thumbnailContainer = document.querySelector('[data-container]');
 const outputElement = document.querySelector('[data-output');
 
 // function that generates an img element
@@ -59,11 +60,11 @@ function createThumbnail(imageURL){
 // loop through IMAGES array.
 // For each image, call the anonymous function.
 // The anon func should expect to recieve and image URL
-IMAGES.forEach(function(singleImageInfo) {
+IMAGES.forEach(function(anImageURL) {
     
     // We pass that image URL to our createThumbnail func
-    let testThumb = createThumbnail(singleImageInfo);
+    let aThumbnail = createThumbnail(anImageURL);
 
     // then append that thumnail to the page.
-    document.body.appendChild(testThumb);
+    thumbnailContainer.appendChild(testThumb);
 })
