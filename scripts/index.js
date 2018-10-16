@@ -5,6 +5,52 @@ const IMAGES = [
     "https://static1.fjcdn.com/thumbnails/comments/Thanks+buddy+have+a+random+gif+_fc5c9c6c4c6b447f37d8f54e6c84b3b1.gif"
 ];
 
+// ===================================
+// Array "navigation" functions
+// ===================================
+
+function getCurrentIndex(currentURL) {
+    let index = IMAGES.map(function (i) {
+        return i.url;
+    }).indexOf(currentURL);
+    let index = IMAGES.map(i => i.url).indexOf
+}
+
+
+function getNextImage(currentURL) {
+    // find the currentURL's index in the IMAGES array
+    let index = IMAGES.indexOf(currentURL);
+    // TODO: chewck if index is -1 at this point
+    // show an error or do something nice.
+    
+    // increment the index
+    index++;
+    // check if it's witin bounds, reset if necessary
+    if (index === IMAGES.length) {
+        index = 0;
+    }
+    // then return the image URL at the new index
+
+    return IMAGES[index];
+}
+function getPrevImage(currentURL) {
+    // find the currentURL's index in the IMAGES array
+    let index = IMAGES.indexOf(currentURL);
+    // TODO: chewck if index is -1 at this point
+    // show an error or do something nice.
+    
+    // increment the index
+    index--;
+    // check if it's witin bounds, reset if necessary
+    if (index < 0) {
+        index = IMAGES.length - 1;
+    }
+    // then return the image URL at the new index
+
+    return IMAGES[index];
+}
+
+
 // Alternate version if you're using images on the hard drive.
 // Make sure to copy the images to an "images" folder in your project
 // const IMAGES = [
@@ -84,13 +130,31 @@ window.addEventListener('keydown', function (event) {
     if (event.keyCode === 27) {
         console.log('I want to hide the modal!');
         modalElement.classList.add('modal-hidden');
+    // } else if (event.keyCode !== getModal) {
+    //     getModal.classList.remove('modal-hidden');
+    } 
+});
+
+// window.addEventListener('target', function (event){
+//     if (event.target === getModal) {
+//         getModal.style.display = "none";
+//     } 
+// });
+
+// add global previous/next keyboard listeners
+window.addEventListener('keydown', function () {
+    console.log(event.keyCode);
+    if(event.keyCode === 37) {
+        console.log('go to previous image');
+        let curr = outputElement.getAttribute('src');
+        let prev = getPrevImage(curr);
+        outputElement.setAttribute('src', prev);
+    } else if (event.keyCode === 39) {
+        console.log('go to the next image');
+        let curr = outputElement.getAttribute('src');
+        let next = getNextImage(curr);
+        outputElement.setAttribute('src', next);
     }
 });
 
-window.onclick('target', function (event){
-    if (event.target === getModal) {
-        getModal.style.display = "none";
-    } else {
-        getModal.style.display = ".modal";
-    }
-});
+// main();
